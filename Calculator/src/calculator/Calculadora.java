@@ -1,5 +1,5 @@
-
 package calculator;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -7,27 +7,28 @@ public class Calculadora extends javax.swing.JFrame {
 
     float operando;
     float resultado;
-    float temporal;
+    float ans;
+    float auxiliar, auxiliar_2;
     String operacion;
-    
+
     public Calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     @Override
-    public Image getIconImage(){
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("helpers/images/fx.png"));
         return retValue;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButtonCerrar = new javax.swing.JButton();
         jLabelTema = new javax.swing.JLabel();
-        jButtonNumClear = new javax.swing.JButton();
+        jButtonNumClearAll = new javax.swing.JButton();
         jButtonNum4 = new javax.swing.JButton();
         jButtonNum1 = new javax.swing.JButton();
         jButtonNum8 = new javax.swing.JButton();
@@ -47,6 +48,9 @@ public class Calculadora extends javax.swing.JFrame {
         jLabelWorkSpace = new javax.swing.JLabel();
         jLabelWorkSpace2 = new javax.swing.JLabel();
         Buffer = new javax.swing.JLabel();
+        jButtonSigno = new javax.swing.JButton();
+        jButtonNumClearWorkSpace = new javax.swing.JButton();
+        jButtonAns = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,15 +72,15 @@ public class Calculadora extends javax.swing.JFrame {
         jLabelTema.setText("jLabel1");
         getContentPane().add(jLabelTema, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, -1));
 
-        jButtonNumClear.setBackground(new java.awt.Color(255, 102, 102));
-        jButtonNumClear.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
-        jButtonNumClear.setText("C");
-        jButtonNumClear.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNumClearAll.setBackground(new java.awt.Color(255, 102, 102));
+        jButtonNumClearAll.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
+        jButtonNumClearAll.setText("CA");
+        jButtonNumClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNumClearActionPerformed(evt);
+                jButtonNumClearAllActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonNumClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 60, 30));
+        getContentPane().add(jButtonNumClearAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 60, 30));
 
         jButtonNum4.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
         jButtonNum4.setText("4");
@@ -134,6 +138,11 @@ public class Calculadora extends javax.swing.JFrame {
 
         jButtonPoint.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
         jButtonPoint.setText(".");
+        jButtonPoint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPointActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, 60, 30));
 
         jButtonSumar.setFont(new java.awt.Font("Monospac821 BT", 1, 14)); // NOI18N
@@ -165,6 +174,11 @@ public class Calculadora extends javax.swing.JFrame {
 
         jButtonResultado.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
         jButtonResultado.setText("=");
+        jButtonResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResultadoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 60, 30));
 
         jButtonNum9.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
@@ -223,8 +237,39 @@ public class Calculadora extends javax.swing.JFrame {
         jLabelWorkSpace2.setOpaque(true);
         getContentPane().add(jLabelWorkSpace2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 150, 40));
 
+        Buffer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Buffer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Buffer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Buffer.setOpaque(true);
-        getContentPane().add(Buffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, 10));
+        getContentPane().add(Buffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 60, 20));
+
+        jButtonSigno.setFont(new java.awt.Font("Monospac821 BT", 1, 14)); // NOI18N
+        jButtonSigno.setText("+/-");
+        jButtonSigno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSignoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSigno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 60, 30));
+
+        jButtonNumClearWorkSpace.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonNumClearWorkSpace.setFont(new java.awt.Font("Monospac821 BT", 1, 18)); // NOI18N
+        jButtonNumClearWorkSpace.setText("C");
+        jButtonNumClearWorkSpace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNumClearWorkSpaceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonNumClearWorkSpace, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 60, 30));
+
+        jButtonAns.setFont(new java.awt.Font("Monospac821 BT", 1, 14)); // NOI18N
+        jButtonAns.setText("ANS");
+        jButtonAns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAns, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 60, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/helpers/images/wallpaper.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, -1));
@@ -236,73 +281,258 @@ public class Calculadora extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
-    private void jButtonNumClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNumClearActionPerformed
+    private void jButtonNumClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNumClearAllActionPerformed
         this.jLabelWorkSpace.setText("");
         this.jLabelWorkSpace2.setText("");
-    }//GEN-LAST:event_jButtonNumClearActionPerformed
+        this.Buffer.setText("");
+    }//GEN-LAST:event_jButtonNumClearAllActionPerformed
 
     private void jButtonNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum2ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"2");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("2");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "2");
+        }   
     }//GEN-LAST:event_jButtonNum2ActionPerformed
 
     private void jButtonNum8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum8ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"8");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("8");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "8");
+        }   
     }//GEN-LAST:event_jButtonNum8ActionPerformed
 
     private void jButtonSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSumarActionPerformed
-        if(!"".equals(this.jLabelWorkSpace.getText())){
-                    this.operando = Float.parseFloat(this.jLabelWorkSpace.getText());
-        if(!"".equals(this.jLabelWorkSpace.getText())&&!"".equals(this.jLabelWorkSpace2.getText())){
-            this.operando =Float.parseFloat(this.jLabelWorkSpace2.getText())+Float.parseFloat(this.jLabelWorkSpace.getText());
+
+        if (!"".equals(this.jLabelWorkSpace.getText())) {
+            this.operando = Float.parseFloat(this.jLabelWorkSpace.getText());
+            if (!"".equals(this.jLabelWorkSpace.getText()) && !"".equals(this.jLabelWorkSpace2.getText()) && "+".equals(this.Buffer.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace2.getText()) + Float.parseFloat(this.jLabelWorkSpace.getText());
+            }
+            this.jLabelWorkSpace2.setText(Float.toString(operando));
+            this.jLabelWorkSpace.setText("");
+            this.Buffer.setText("+");
+            this.operacion = this.Buffer.getText();
+            //this.ans = this.operando;
         }
-        this.jLabelWorkSpace2.setText(Float.toString(operando));
-        this.jLabelWorkSpace.setText("");
+        if (!"".equals(this.jLabelWorkSpace2.getText())) {
+            this.Buffer.setText("+");
+            this.operacion = this.Buffer.getText();
         }
+        
     }//GEN-LAST:event_jButtonSumarActionPerformed
 
     private void jButtonNum9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum9ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"9");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("9");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "9");
+        }   
     }//GEN-LAST:event_jButtonNum9ActionPerformed
 
     private void jButtonDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDivideActionPerformed
-        // TODO add your handling code here:
+        if (!"".equals(this.jLabelWorkSpace.getText())) {
+            this.operando = Float.parseFloat(this.jLabelWorkSpace.getText());
+            if (!"".equals(this.jLabelWorkSpace.getText()) && !"".equals(this.jLabelWorkSpace2.getText())&& "/".equals(this.Buffer.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace2.getText()) / Float.parseFloat(this.jLabelWorkSpace.getText());
+            }
+            this.jLabelWorkSpace2.setText(Float.toString(operando));
+            this.jLabelWorkSpace.setText("");
+            this.Buffer.setText("/");
+            this.operacion = this.Buffer.getText();
+            //this.ans = this.operando;
+        }
+        if (!"".equals(this.jLabelWorkSpace2.getText())) {
+            this.Buffer.setText("/");
+            this.operacion = this.Buffer.getText();
+        }
     }//GEN-LAST:event_jButtonDivideActionPerformed
 
     private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
-        // TODO add your handling code here:
+        if (!"".equals(this.jLabelWorkSpace.getText())) {
+            this.operando = Float.parseFloat(this.jLabelWorkSpace.getText());
+            if (!"".equals(this.jLabelWorkSpace.getText()) && !"".equals(this.jLabelWorkSpace2.getText())&& "x".equals(this.Buffer.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace2.getText()) * Float.parseFloat(this.jLabelWorkSpace.getText());
+            }
+            this.jLabelWorkSpace2.setText(Float.toString(operando));
+            this.jLabelWorkSpace.setText("");
+            this.Buffer.setText("x");
+            this.operacion = this.Buffer.getText();
+            //this.ans = this.operando;
+        }
+        if (!"".equals(this.jLabelWorkSpace2.getText())) {
+            this.Buffer.setText("x");
+            this.operacion = this.Buffer.getText();
+        }
     }//GEN-LAST:event_jButtonProductActionPerformed
 
     private void jButtonRestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestaActionPerformed
-        // TODO add your handling code here:
+        if (!"".equals(this.jLabelWorkSpace.getText())) {
+            this.operando = Float.parseFloat(this.jLabelWorkSpace.getText());
+            if (!"".equals(this.jLabelWorkSpace.getText()) && !"".equals(this.jLabelWorkSpace2.getText())&& "-".equals(this.Buffer.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace2.getText()) - Float.parseFloat(this.jLabelWorkSpace.getText());
+            }
+
+            this.jLabelWorkSpace2.setText(Float.toString(operando));
+            this.jLabelWorkSpace.setText("");
+            this.Buffer.setText("-");
+            this.operacion = this.Buffer.getText();
+            //this.ans = this.operando;
+        }
+        if (!"".equals(this.jLabelWorkSpace2.getText())) {
+            this.Buffer.setText("-");
+            this.operacion = this.Buffer.getText();
+        }
     }//GEN-LAST:event_jButtonRestaActionPerformed
 
     private void jButtonNum7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum7ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"7");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("7");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "7");
+        }   
     }//GEN-LAST:event_jButtonNum7ActionPerformed
 
     private void jButtonNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum0ActionPerformed
-       this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"0");
+        if("ANS".equals(this.Buffer.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("0");
+        }else{
+            if ("".equals(this.jLabelWorkSpace.getText()) || this.jLabelWorkSpace.getText().contains(".") || Float.parseFloat(this.jLabelWorkSpace.getText()) > 0) {
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "0");
+        }
+        }   
     }//GEN-LAST:event_jButtonNum0ActionPerformed
 
     private void jButtonNum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum1ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"1");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("1");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "1");
+        }   
     }//GEN-LAST:event_jButtonNum1ActionPerformed
 
     private void jButtonNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum3ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"3");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("3");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "3");
+        }   
     }//GEN-LAST:event_jButtonNum3ActionPerformed
 
     private void jButtonNum4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum4ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"4");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("4");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "4");
+        }   
     }//GEN-LAST:event_jButtonNum4ActionPerformed
 
     private void jButtonNum5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum5ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"5");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("5");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "5");
+        }   
     }//GEN-LAST:event_jButtonNum5ActionPerformed
 
     private void jButtonNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNum6ActionPerformed
-        this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText()+"6");
+        if("ANS".equals(this.Buffer.getText())||"0".equals(this.jLabelWorkSpace.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText("6");
+        }else{
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + "6");
+        }   
     }//GEN-LAST:event_jButtonNum6ActionPerformed
+
+    private void jButtonPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPointActionPerformed
+        if("ANS".equals(this.Buffer.getText())){
+            this.Buffer.setText("");
+            this.jLabelWorkSpace.setText(".");
+        }else{
+            if (!this.jLabelWorkSpace.getText().contains("."))
+            this.jLabelWorkSpace.setText(this.jLabelWorkSpace.getText() + ".");
+        }
+    }//GEN-LAST:event_jButtonPointActionPerformed
+
+    private void jButtonResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResultadoActionPerformed
+        
+        if (!"".equals(this.Buffer.getText()) && !"".equals(this.jLabelWorkSpace2.getText())&& !"".equals(this.jLabelWorkSpace.getText())) {
+            this.auxiliar = Float.parseFloat(this.jLabelWorkSpace2.getText());
+            this.auxiliar_2 = Float.parseFloat(this.jLabelWorkSpace.getText());
+            this.jLabelWorkSpace2.setText(bufferOperation(auxiliar, auxiliar_2));
+            this.jLabelWorkSpace.setText("");
+            this.Buffer.setText("");
+        }
+    }//GEN-LAST:event_jButtonResultadoActionPerformed
+
+    private void jButtonSignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignoActionPerformed
+        if (!"".equals(this.jLabelWorkSpace.getText())) {
+            if (!"".equals(this.jLabelWorkSpace.getText()) && "".equals(this.jLabelWorkSpace2.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace.getText()) * -1;
+                this.jLabelWorkSpace.setText(Float.toString(this.operando));
+            } else if (!"".equals(this.jLabelWorkSpace2.getText())) {
+                this.operando = Float.parseFloat(this.jLabelWorkSpace.getText()) * -1;
+                this.jLabelWorkSpace.setText(Float.toString(this.operando));
+            }
+        }
+    }//GEN-LAST:event_jButtonSignoActionPerformed
+
+    private void jButtonNumClearWorkSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNumClearWorkSpaceActionPerformed
+        this.jLabelWorkSpace.setText("");
+        if("ANS".equals(this.Buffer.getText())){
+            this.Buffer.setText("");
+        }
+    }//GEN-LAST:event_jButtonNumClearWorkSpaceActionPerformed
+
+    private void jButtonAnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnsActionPerformed
+            this.jLabelWorkSpace.setText(Float.toString(this.ans));
+            if("".equals(this.Buffer.getText())){
+                this.Buffer.setText("ANS");
+                this.jLabelWorkSpace2.setText("");
+            }
+    }//GEN-LAST:event_jButtonAnsActionPerformed
+
+    public String bufferOperation(float a, float b) {
+
+        String result = "";
+        float x = 0;
+
+        switch (this.operacion) {
+            case "+":
+                x = a + b;
+                break;
+            case "-":
+                x = a - b;
+                break;
+            case "/":
+                x = a / b;
+                break;
+            case "x":
+                x = a * b;
+                break;
+        }
+
+        result = Float.toString(x);
+        this.ans = Float.parseFloat(result);
+        
+        return result;
+    }
+
+    public float negativePositive(String a) {
+        float numeroWorkSpace = 0;
+
+        return numeroWorkSpace;
+    }
 
     public static void main(String args[]) {
 
@@ -332,6 +562,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buffer;
+    private javax.swing.JButton jButtonAns;
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonDivide;
     private javax.swing.JButton jButtonNum0;
@@ -344,11 +575,13 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNum7;
     private javax.swing.JButton jButtonNum8;
     private javax.swing.JButton jButtonNum9;
-    private javax.swing.JButton jButtonNumClear;
+    private javax.swing.JButton jButtonNumClearAll;
+    private javax.swing.JButton jButtonNumClearWorkSpace;
     private javax.swing.JButton jButtonPoint;
     private javax.swing.JButton jButtonProduct;
     private javax.swing.JButton jButtonResta;
     private javax.swing.JButton jButtonResultado;
+    private javax.swing.JButton jButtonSigno;
     private javax.swing.JButton jButtonSumar;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelTema;
