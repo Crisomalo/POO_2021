@@ -7,6 +7,7 @@ public class Menu extends javax.swing.JFrame {
     
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
    
@@ -14,163 +15,132 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Menu = new javax.swing.JPanel();
+        panelMenu = new javax.swing.JPanel();
         txtControlInventario = new javax.swing.JLabel();
-        IconoMenu = new javax.swing.JLabel();
+        iconMenu = new javax.swing.JLabel();
         imgUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
-        iconInventario = new javax.swing.JLabel();
-        iconAdicion = new javax.swing.JLabel();
-        iconHistorial = new javax.swing.JLabel();
-        iconEntrada = new javax.swing.JLabel();
-        iconIngreso = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtInventario = new javax.swing.JLabel();
+        txtModificar = new javax.swing.JLabel();
+        txtIngreso = new javax.swing.JLabel();
+        txtSalida = new javax.swing.JLabel();
+        txtHistorial = new javax.swing.JLabel();
+        txtCerrarSesion = new javax.swing.JLabel();
+        Inventario = new javax.swing.JButton();
+        Modificar = new javax.swing.JButton();
+        Historial = new javax.swing.JButton();
+        Ingreso = new javax.swing.JButton();
+        Salida = new javax.swing.JButton();
+        CerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        Menu.setBackground(new java.awt.Color(255, 255, 255));
-        Menu.setPreferredSize(new java.awt.Dimension(664, 339));
+        panelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        panelMenu.setPreferredSize(new java.awt.Dimension(664, 339));
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtControlInventario.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         txtControlInventario.setText("Control de Invetario");
+        panelMenu.add(txtControlInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 11, -1, -1));
 
-        IconoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/almacen.png"))); // NOI18N
+        iconMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/almacen.png"))); // NOI18N
+        panelMenu.add(iconMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 80, -1, 214));
 
         imgUsuario.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
+        panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelMenu.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
-        iconInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inventario.png"))); // NOI18N
+        txtInventario.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtInventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtInventario.setText("Inventario");
+        panelMenu.add(txtInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 157, 70, -1));
 
-        iconAdicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adicion.png"))); // NOI18N
+        txtModificar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtModificar.setText("Modificar");
+        panelMenu.add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 157, 70, -1));
 
-        iconHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/historial.png"))); // NOI18N
+        txtIngreso.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtIngreso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtIngreso.setText("Ingreso");
+        panelMenu.add(txtIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 277, 70, -1));
 
-        iconEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ingreso.png"))); // NOI18N
+        txtSalida.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtSalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtSalida.setText("Salida");
+        panelMenu.add(txtSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 277, 70, -1));
 
-        iconIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salida.png"))); // NOI18N
+        txtHistorial.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtHistorial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtHistorial.setText("Historial");
+        panelMenu.add(txtHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 157, 77, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
+        txtCerrarSesion.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtCerrarSesion.setText("Cerrar sesión");
+        panelMenu.add(txtCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 277, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Inventario");
+        Inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inventario.png"))); // NOI18N
+        Inventario.setBorder(null);
+        Inventario.setBorderPainted(false);
+        Inventario.setContentAreaFilled(false);
+        Inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inventario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/inventario opaque.png"))); // NOI18N
+        panelMenu.add(Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, -1));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Modificar");
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adicion.png"))); // NOI18N
+        Modificar.setBorder(null);
+        Modificar.setBorderPainted(false);
+        Modificar.setContentAreaFilled(false);
+        Modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Modificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/adicion opaque.png"))); // NOI18N
+        panelMenu.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 80, 70, -1));
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ingreso");
+        Historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/historial.png"))); // NOI18N
+        Historial.setBorder(null);
+        Historial.setBorderPainted(false);
+        Historial.setContentAreaFilled(false);
+        Historial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Historial.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/historial opaque.png"))); // NOI18N
+        panelMenu.add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 77, -1));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Salida");
+        Ingreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ingreso.png"))); // NOI18N
+        Ingreso.setBorder(null);
+        Ingreso.setBorderPainted(false);
+        Ingreso.setContentAreaFilled(false);
+        Ingreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ingreso.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/ingreso opaque.png"))); // NOI18N
+        panelMenu.add(Ingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 200, 70, -1));
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Historial");
+        Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salida.png"))); // NOI18N
+        Salida.setBorder(null);
+        Salida.setBorderPainted(false);
+        Salida.setContentAreaFilled(false);
+        Salida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salida.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/salida opaque.png"))); // NOI18N
+        panelMenu.add(Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 200, 70, -1));
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel7.setText("Cerrar sesión");
-
-        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
-        Menu.setLayout(MenuLayout);
-        MenuLayout.setHorizontalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addComponent(imgUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(IconoMenu))
-                .addGap(66, 66, 66)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtControlInventario)
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(MenuLayout.createSequentialGroup()
-                                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(iconEntrada, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addGap(48, 48, 48)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MenuLayout.createSequentialGroup()
-                                    .addGap(118, 118, 118)
-                                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(iconAdicion)
-                                        .addComponent(iconIngreso))))
-                            .addGroup(MenuLayout.createSequentialGroup()
-                                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(iconInventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(47, 47, 47)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(iconHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        MenuLayout.setVerticalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtControlInventario)
-                        .addComponent(imgUsuario)))
-                .addGap(39, 39, 39)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconInventario)
-                            .addComponent(iconAdicion)
-                            .addComponent(iconHistorial))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(iconEntrada)
-                            .addComponent(iconIngreso)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)))
-                    .addComponent(IconoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
+        CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
+        CerrarSesion.setBorder(null);
+        CerrarSesion.setBorderPainted(false);
+        CerrarSesion.setContentAreaFilled(false);
+        CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/cerrar-sesion opaque.png"))); // NOI18N
+        panelMenu.add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 77, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -212,22 +182,22 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IconoMenu;
-    private javax.swing.JPanel Menu;
-    private javax.swing.JLabel iconAdicion;
-    private javax.swing.JLabel iconEntrada;
-    private javax.swing.JLabel iconHistorial;
-    private javax.swing.JLabel iconIngreso;
-    private javax.swing.JLabel iconInventario;
+    private javax.swing.JButton CerrarSesion;
+    private javax.swing.JButton Historial;
+    private javax.swing.JButton Ingreso;
+    private javax.swing.JButton Inventario;
+    private javax.swing.JButton Modificar;
+    private javax.swing.JButton Salida;
+    private javax.swing.JLabel iconMenu;
     private javax.swing.JLabel imgUsuario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel panelMenu;
+    private javax.swing.JLabel txtCerrarSesion;
     private javax.swing.JLabel txtControlInventario;
+    private javax.swing.JLabel txtHistorial;
+    private javax.swing.JLabel txtIngreso;
+    private javax.swing.JLabel txtInventario;
+    private javax.swing.JLabel txtModificar;
+    private javax.swing.JLabel txtSalida;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
