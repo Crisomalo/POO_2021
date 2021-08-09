@@ -5,6 +5,7 @@ public class Modificar extends javax.swing.JFrame {
 
     public Modificar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,6 +28,7 @@ public class Modificar extends javax.swing.JFrame {
         setNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         panelModificar.setBackground(new java.awt.Color(255, 255, 255));
         panelModificar.setMinimumSize(new java.awt.Dimension(664, 339));
