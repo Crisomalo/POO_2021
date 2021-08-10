@@ -77,6 +77,11 @@ public class Ingreso extends javax.swing.JFrame {
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonRegresar.setText("Regresar");
         buttonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegresarActionPerformed(evt);
+            }
+        });
         panelIngreso.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
 
         txtCodigo.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -161,6 +166,14 @@ public class Ingreso extends javax.swing.JFrame {
     private void setCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_setCantidadActionPerformed
+
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
+
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        
+    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

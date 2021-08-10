@@ -49,7 +49,7 @@ public class Modificar extends javax.swing.JFrame {
         buttonEliminar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonEliminar.setText("Eliminar");
         buttonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelModificar.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, -1, -1));
+        panelModificar.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -74,6 +74,11 @@ public class Modificar extends javax.swing.JFrame {
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonRegresar.setText("Regresar");
         buttonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegresarActionPerformed(evt);
+            }
+        });
         panelModificar.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
 
         txtCodigo.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -124,6 +129,14 @@ public class Modificar extends javax.swing.JFrame {
     private void setNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_setNombreActionPerformed
+
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
+        
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+
+    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

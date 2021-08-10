@@ -90,6 +90,11 @@ public class Menu extends javax.swing.JFrame {
         Inventario.setContentAreaFilled(false);
         Inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Inventario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/inventario opaque.png"))); // NOI18N
+        Inventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InventarioActionPerformed(evt);
+            }
+        });
         panelMenu.add(Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 80, 70, -1));
 
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adicion.png"))); // NOI18N
@@ -98,6 +103,11 @@ public class Menu extends javax.swing.JFrame {
         Modificar.setContentAreaFilled(false);
         Modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Modificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/adicion opaque.png"))); // NOI18N
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
         panelMenu.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 80, 70, -1));
 
         Historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/historial.png"))); // NOI18N
@@ -106,6 +116,11 @@ public class Menu extends javax.swing.JFrame {
         Historial.setContentAreaFilled(false);
         Historial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Historial.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/historial opaque.png"))); // NOI18N
+        Historial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HistorialActionPerformed(evt);
+            }
+        });
         panelMenu.add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 77, -1));
 
         Ingreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ingreso.png"))); // NOI18N
@@ -114,6 +129,11 @@ public class Menu extends javax.swing.JFrame {
         Ingreso.setContentAreaFilled(false);
         Ingreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Ingreso.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/ingreso opaque.png"))); // NOI18N
+        Ingreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IngresoActionPerformed(evt);
+            }
+        });
         panelMenu.add(Ingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 200, 70, -1));
 
         Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salida.png"))); // NOI18N
@@ -122,6 +142,11 @@ public class Menu extends javax.swing.JFrame {
         Salida.setContentAreaFilled(false);
         Salida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Salida.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/salida opaque.png"))); // NOI18N
+        Salida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalidaActionPerformed(evt);
+            }
+        });
         panelMenu.add(Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 200, 70, -1));
 
         CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
@@ -130,6 +155,11 @@ public class Menu extends javax.swing.JFrame {
         CerrarSesion.setContentAreaFilled(false);
         CerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images_opaque/cerrar-sesion opaque.png"))); // NOI18N
+        CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionActionPerformed(evt);
+            }
+        });
         panelMenu.add(CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 77, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,6 +175,57 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventarioActionPerformed
+        
+        this.setVisible(false);
+        Inventario inventario = new Inventario();
+        inventario.setVisible(true);
+        
+    }//GEN-LAST:event_InventarioActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        
+        this.setVisible(false);
+        Modificar modificar = new Modificar();
+        modificar.setVisible(true);
+
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
+        
+        this.setVisible(false);
+        Historial historial = new Historial();
+        historial.setVisible(true);
+
+    }//GEN-LAST:event_HistorialActionPerformed
+
+    private void IngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoActionPerformed
+        
+        this.setVisible(false);
+        Ingreso ingreso = new Ingreso();
+        ingreso.setVisible(true);
+
+    }//GEN-LAST:event_IngresoActionPerformed
+
+    private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
+       
+        this.setVisible(false);
+        SalidaItem salida = new SalidaItem();
+        salida.setVisible(true);
+        
+        
+    }//GEN-LAST:event_SalidaActionPerformed
+
+    private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
+
+        this.setVisible(false);
+        Login login = new Login();
+        login.setVisible(true);
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments

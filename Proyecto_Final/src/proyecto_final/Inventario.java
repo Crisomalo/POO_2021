@@ -40,6 +40,11 @@ public class Inventario extends javax.swing.JFrame {
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonRegresar.setText("Regresar");
         buttonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegresarActionPerformed(evt);
+            }
+        });
         panelInventario.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 430, -1, -1));
 
         tableInventario.setModel(new javax.swing.table.DefaultTableModel(
@@ -86,6 +91,14 @@ public class Inventario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
+        
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        
+    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -78,7 +78,7 @@ public class SalidaItem extends javax.swing.JFrame {
         buttonLimpiarCampos.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonLimpiarCampos.setText("Limpiar campos");
         buttonLimpiarCampos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelSalidaItem.add(buttonLimpiarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        panelSalidaItem.add(buttonLimpiarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
         buttonEntregar.setBackground(new java.awt.Color(255, 255, 255));
         buttonEntregar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -89,7 +89,7 @@ public class SalidaItem extends javax.swing.JFrame {
                 buttonEntregarActionPerformed(evt);
             }
         });
-        panelSalidaItem.add(buttonEntregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
+        panelSalidaItem.add(buttonEntregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
 
         tableSalida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,12 +104,17 @@ public class SalidaItem extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableSalida);
 
-        panelSalidaItem.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 680, 90));
+        panelSalidaItem.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 680, 110));
 
         buttonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonRegresar.setText("Regresar");
         buttonRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegresarActionPerformed(evt);
+            }
+        });
         panelSalidaItem.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,6 +151,14 @@ public class SalidaItem extends javax.swing.JFrame {
     private void buttonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonEntregarActionPerformed
+
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
+
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+
+    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
