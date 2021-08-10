@@ -1,14 +1,25 @@
 
 package proyecto_final;
 
+import helpers.Administrador;
+import helpers.Normal;
+import javax.swing.JOptionPane;
+
 public class Login extends javax.swing.JFrame {
 
+    Administrador administrador = new Administrador();
+    Normal normal = new Normal();
     
+    public String tipoUsuario [] = {administrador.getTipoUsuario(),normal.getTipoUsuario()};
+    public String contraseña [] = {administrador.getContraseña(), normal.getContraseña()};
+    public int nivelAcceso [] = {administrador.getNivelAcceso(),normal.getNivelAcceso()};
+            
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -19,7 +30,7 @@ public class Login extends javax.swing.JFrame {
         LabelUsuario = new javax.swing.JLabel();
         LabelContraseña = new javax.swing.JLabel();
         Usuario = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Contraseña = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JLabel();
         Ingresar = new javax.swing.JButton();
@@ -53,7 +64,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         panelLogin.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 114, 240, 31));
-        panelLogin.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 192, 240, 30));
+        panelLogin.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 192, 240, 30));
 
         txtUsuario.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtUsuario.setText("Usuario");
@@ -93,7 +104,25 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
-        // TODO add your handling code here:
+        int count = 0, i,aux = 0;
+        
+        for(i = 0; i < tipoUsuario.length && aux != 1; i++){
+            if(Usuario.getText().equals(tipoUsuario[i])){
+                 count = i;
+                 aux = 1;
+            }
+        }
+        System.out.println(tipoUsuario.length);
+        if(count < tipoUsuario.length ){
+            if(Contraseña.getText().equals(contraseña[count])){
+                this.setVisible(false);
+                Menu menu = new Menu();
+                menu.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
     }//GEN-LAST:event_IngresarActionPerformed
 
     /**
@@ -132,13 +161,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField Contraseña;
     private javax.swing.JLabel IconoInicio;
     private javax.swing.JButton Ingresar;
     private javax.swing.JLabel LabelContraseña;
     private javax.swing.JLabel LabelUsuario;
     private javax.swing.JLabel Titulo;
     private javax.swing.JTextField Usuario;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JLabel txtContraseña;
     private javax.swing.JLabel txtUsuario;
