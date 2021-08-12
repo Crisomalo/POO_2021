@@ -1,11 +1,23 @@
 
 package proyecto_final;
 
-public class Modificar extends javax.swing.JFrame {
+import helpers.Datos;
+import javax.swing.table.DefaultTableModel;
 
+public class Modificar extends javax.swing.JFrame {
+    
+    Datos inventario = new Datos();
+    
     public Modificar() {
         initComponents();
+        Datos inventario = new Datos();
         this.setLocationRelativeTo(null);
+        
+        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+        
+        model.addColumn("Nombre");
+        model.addColumn("Codigo");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -18,14 +30,15 @@ public class Modificar extends javax.swing.JFrame {
         iconModificar = new javax.swing.JLabel();
         buttonEliminar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         buttonRegresar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
         buttonAñadir = new javax.swing.JButton();
         setCodigo = new javax.swing.JTextField();
         setNombre = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableInventario = new javax.swing.JTable();
+        mostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -49,26 +62,11 @@ public class Modificar extends javax.swing.JFrame {
         buttonEliminar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         buttonEliminar.setText("Eliminar");
         buttonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelModificar.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
+        panelModificar.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelModificar.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        panelModificar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 680, 170));
 
         buttonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -108,11 +106,36 @@ public class Modificar extends javax.swing.JFrame {
         });
         panelModificar.add(setNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 250, 30));
 
+        tableInventario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableInventarioMousePressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableInventario);
+
+        panelModificar.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 262, 680, 160));
+
+        mostrarDatos.setText("Mostrar datos");
+        mostrarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarDatosActionPerformed(evt);
+            }
+        });
+        panelModificar.add(mostrarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 120, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,20 +146,69 @@ public class Modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAñadirActionPerformed
-        // TODO add your handling code here:
+        
+        int fila = inventario.getSelectorFila();
+        int aux = 0;
+        
+        if(!"".equals(setNombre.getText()) && !"".equals(setCodigo.getText())){
+            
+            DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+            
+            inventario.setDato(fila, 0, setNombre.getText());
+            inventario.setDato(fila, 1, setCodigo.getText());
+            
+            for(int i = 0; i < 50 && aux == 0; i++){
+                for(int j = 0; j <= 7 && aux == 0; j++){
+                    if(Datos.data[i][j] != null){
+                        Object []  row = {Datos.data[i+fila][j],Datos.data[i+fila][j+1]};
+                        model.addRow(row);
+                        if(Datos.data[i][j] != null){
+                            aux = 1;
+                        }
+                    }
+                }
+            }
+            inventario.incrementarSelector();
+            setNombre.setText("");
+            setCodigo.setText("");
+        }
     }//GEN-LAST:event_buttonAñadirActionPerformed
 
     private void setNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setNombreActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_setNombreActionPerformed
 
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
         
         this.setVisible(false);
-        Menu menu = new Menu();
-        menu.setVisible(true);
+        //Menu menu = new Menu();
+        //menu.setVisible(true);
 
     }//GEN-LAST:event_buttonRegresarActionPerformed
+
+    private void tableInventarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableInventarioMousePressed
+
+    }//GEN-LAST:event_tableInventarioMousePressed
+
+    private void mostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDatosActionPerformed
+        int aux =0;
+        
+        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+        
+        for( int i = model.getRowCount()-1; i >= 0; i--){
+            model.removeRow(i);
+        }
+        
+        for(int i = 0; i < 50 && aux == 0; i++){
+                    if(Datos.data[i][0] != null){
+                        Object []  row = {Datos.data[i][0],inventario.data[i][1]};
+                        model.addRow(row);
+                    }
+                    if(Datos.data[i][0] == null){
+                            aux = 1;
+                        }
+            }
+    }//GEN-LAST:event_mostrarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,11 +251,12 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JButton buttonRegresar;
     private javax.swing.JLabel iconModificar;
     private javax.swing.JLabel imgUsuario;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton mostrarDatos;
     private javax.swing.JPanel panelModificar;
     private javax.swing.JTextField setCodigo;
     private javax.swing.JTextField setNombre;
+    public javax.swing.JTable tableInventario;
     private javax.swing.JLabel txtCodigo;
     private javax.swing.JLabel txtInventario;
     private javax.swing.JLabel txtNombre;

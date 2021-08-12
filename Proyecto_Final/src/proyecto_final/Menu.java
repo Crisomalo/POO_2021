@@ -1,13 +1,19 @@
 
 package proyecto_final;
 
+import helpers.Datos;
+import javax.swing.table.DefaultTableModel;
+
 
 public class Menu extends javax.swing.JFrame {
-
     
+    //Datos inventario = new Datos();
+        
     public Menu() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
    
@@ -186,7 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         
-        this.setVisible(false);
+        //this.setVisible(false);
         Modificar modificar = new Modificar();
         modificar.setVisible(true);
 
