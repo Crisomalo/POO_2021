@@ -2,14 +2,8 @@ package helpers;
 
 public class Datos {
     
-    private static int selectorFila;
+    private static int selectorFila = 0;
     public static String data[][] = new String [50][8];
-    
-    
-    public Datos(){
-        selectorFila = 0;
-    }
-    
     
     public void incrementarSelector(){
         Datos.selectorFila ++;
@@ -22,7 +16,6 @@ public class Datos {
     public void setDato(int _fila, int _columna, String _dato){
         Datos.data[_fila][_columna] = _dato;
     }
-    
     
     public void imprimirMatriz(){
         for(int i = 0; i < 50; i++){

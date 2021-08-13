@@ -93,8 +93,6 @@ public class Historial extends javax.swing.JFrame {
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
 
         this.setVisible(false);
-        Menu menu = new Menu();
-        menu.setVisible(true);
         
     }//GEN-LAST:event_buttonRegresarActionPerformed
 
@@ -143,6 +141,6 @@ public class Historial extends javax.swing.JFrame {
     private javax.swing.JPanel panelHistorial;
     private javax.swing.JTable tableHistorial;
     private javax.swing.JLabel txtInventario;
-    private javax.swing.JLabel txtUsuario;
+    public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -155,8 +155,6 @@ public class SalidaItem extends javax.swing.JFrame {
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
 
         this.setVisible(false);
-        Menu menu = new Menu();
-        menu.setVisible(true);
 
     }//GEN-LAST:event_buttonRegresarActionPerformed
 
@@ -213,6 +211,6 @@ public class SalidaItem extends javax.swing.JFrame {
     private javax.swing.JTextField txtEntregadoa;
     private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtSalida;
-    private javax.swing.JLabel txtUsuario;
+    public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

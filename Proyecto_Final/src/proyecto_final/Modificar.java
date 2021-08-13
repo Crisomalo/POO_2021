@@ -9,14 +9,18 @@ public class Modificar extends javax.swing.JFrame {
     Datos inventario = new Datos();
     
     public Modificar() {
+        
         initComponents();
-        Datos inventario = new Datos();
+        //Datos inventario = new Datos();
         this.setLocationRelativeTo(null);
         
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
         
         model.addColumn("Nombre");
         model.addColumn("Codigo");
+        initDatos();
+        System.out.println(inventario.getSelectorFila());
+        
         
     }
 
@@ -171,6 +175,7 @@ public class Modificar extends javax.swing.JFrame {
             inventario.incrementarSelector();
             setNombre.setText("");
             setCodigo.setText("");
+            System.out.println(inventario.getSelectorFila());
         }
     }//GEN-LAST:event_buttonAñadirActionPerformed
 
@@ -191,7 +196,7 @@ public class Modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_tableInventarioMousePressed
 
     private void mostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDatosActionPerformed
-        int aux =0;
+        /*int aux =0;
         
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
         
@@ -207,7 +212,7 @@ public class Modificar extends javax.swing.JFrame {
                     if(Datos.data[i][0] == null){
                             aux = 1;
                         }
-            }
+            }*/
     }//GEN-LAST:event_mostrarDatosActionPerformed
 
     /**
@@ -260,6 +265,26 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JLabel txtCodigo;
     private javax.swing.JLabel txtInventario;
     private javax.swing.JLabel txtNombre;
-    private javax.swing.JLabel txtUsuario;
+    public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+     void initDatos() {
+        
+       Datos inventario = new Datos();
+        
+        int aux = 0;
+        
+        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+        
+        for(int i = 0; i < 50 && aux == 0; i++){
+                    if(Datos.data[i][0] != null){
+                        Object []  row = {Datos.data[i][0],inventario.data[i][1]};
+                        model.addRow(row);
+                    }
+                    if(Datos.data[i][0] == null){
+                            aux = 1;
+                        }
+            }
+        inventario.imprimirMatriz();
+    }
 }

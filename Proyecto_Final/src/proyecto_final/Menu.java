@@ -2,17 +2,20 @@
 package proyecto_final;
 
 import helpers.Datos;
+import helpers.Administrador;
 import javax.swing.table.DefaultTableModel;
 
 
 public class Menu extends javax.swing.JFrame {
     
-    //Datos inventario = new Datos();
-        
+    Datos inventario = new Datos();
+    Administrador administrador = new Administrador();
+    
     public Menu() {
         
         initComponents();
         this.setLocationRelativeTo(null);
+        this.txtUsuario.setText(administrador.getTipoUsuario());
         
     }
 
@@ -184,7 +187,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventarioActionPerformed
         
-        this.setVisible(false);
+        
         Inventario inventario = new Inventario();
         inventario.setVisible(true);
         
@@ -192,7 +195,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         
-        //this.setVisible(false);
         Modificar modificar = new Modificar();
         modificar.setVisible(true);
 
@@ -200,7 +202,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
         
-        this.setVisible(false);
         Historial historial = new Historial();
         historial.setVisible(true);
 
@@ -208,7 +209,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void IngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoActionPerformed
         
-        this.setVisible(false);
         Ingreso ingreso = new Ingreso();
         ingreso.setVisible(true);
 
@@ -216,7 +216,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
        
-        this.setVisible(false);
         SalidaItem salida = new SalidaItem();
         salida.setVisible(true);
         
@@ -225,17 +224,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
 
-        this.setVisible(false);
         Login login = new Login();
         login.setVisible(true);
         
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -285,6 +278,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel txtInventario;
     private javax.swing.JLabel txtModificar;
     private javax.swing.JLabel txtSalida;
-    private javax.swing.JLabel txtUsuario;
+    public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
