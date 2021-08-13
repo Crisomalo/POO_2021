@@ -2,17 +2,24 @@
 package proyecto_final;
 
 import helpers.Datos;
+import helpers.Usuario;
 import javax.swing.table.DefaultTableModel;
 
 public class Modificar extends javax.swing.JFrame {
     
     Datos inventario = new Datos();
+    Usuario usuario = new Usuario();
     
     public Modificar() {
         
         initComponents();
-        //Datos inventario = new Datos();
         this.setLocationRelativeTo(null);
+        
+        if (usuario.getNivelAcceso() == 1) {
+            txtUsuario.setText("Acceso total");
+        } else {
+            txtUsuario.setText("Acceso parcial");
+        }
         
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
         
@@ -32,7 +39,6 @@ public class Modificar extends javax.swing.JFrame {
         imgUsuario = new javax.swing.JLabel();
         txtInventario = new javax.swing.JLabel();
         iconModificar = new javax.swing.JLabel();
-        buttonEliminar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JLabel();
         buttonRegresar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JLabel();
@@ -42,7 +48,6 @@ public class Modificar extends javax.swing.JFrame {
         setNombre = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableInventario = new javax.swing.JTable();
-        mostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -62,13 +67,8 @@ public class Modificar extends javax.swing.JFrame {
         iconModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_origin/modificar.png"))); // NOI18N
         panelModificar.add(iconModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        buttonEliminar.setBackground(new java.awt.Color(255, 255, 255));
-        buttonEliminar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        buttonEliminar.setText("Eliminar");
-        buttonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelModificar.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, -1, -1));
-
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelModificar.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
@@ -126,14 +126,6 @@ public class Modificar extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableInventario);
 
         panelModificar.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 262, 680, 160));
-
-        mostrarDatos.setText("Mostrar datos");
-        mostrarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarDatosActionPerformed(evt);
-            }
-        });
-        panelModificar.add(mostrarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,26 +187,6 @@ public class Modificar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tableInventarioMousePressed
 
-    private void mostrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDatosActionPerformed
-        /*int aux =0;
-        
-        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
-        
-        for( int i = model.getRowCount()-1; i >= 0; i--){
-            model.removeRow(i);
-        }
-        
-        for(int i = 0; i < 50 && aux == 0; i++){
-                    if(Datos.data[i][0] != null){
-                        Object []  row = {Datos.data[i][0],inventario.data[i][1]};
-                        model.addRow(row);
-                    }
-                    if(Datos.data[i][0] == null){
-                            aux = 1;
-                        }
-            }*/
-    }//GEN-LAST:event_mostrarDatosActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -252,12 +224,10 @@ public class Modificar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAñadir;
-    private javax.swing.JButton buttonEliminar;
     private javax.swing.JButton buttonRegresar;
     private javax.swing.JLabel iconModificar;
     private javax.swing.JLabel imgUsuario;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton mostrarDatos;
     private javax.swing.JPanel panelModificar;
     private javax.swing.JTextField setCodigo;
     private javax.swing.JTextField setNombre;
@@ -268,7 +238,7 @@ public class Modificar extends javax.swing.JFrame {
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-     void initDatos() {
+     public void initDatos() {
         
        Datos inventario = new Datos();
         
@@ -285,6 +255,5 @@ public class Modificar extends javax.swing.JFrame {
                             aux = 1;
                         }
             }
-        inventario.imprimirMatriz();
     }
 }

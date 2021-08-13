@@ -1,10 +1,21 @@
 package proyecto_final;
 
-public class SalidaItem extends javax.swing.JFrame {
+import helpers.Usuario;
 
+public class SalidaItem extends javax.swing.JFrame {
+    
+    Usuario usuario = new Usuario();
+    
     public SalidaItem() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        if (usuario.getNivelAcceso() == 1) {
+            txtUsuario.setText("Acceso total");
+        } else {
+            txtUsuario.setText("Acceso parcial");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -118,6 +129,7 @@ public class SalidaItem extends javax.swing.JFrame {
         panelSalidaItem.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelSalidaItem.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 

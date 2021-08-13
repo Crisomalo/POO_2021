@@ -2,12 +2,12 @@ package helpers;
 
 public class Usuario {
     
-    private int nivelAcceso;
+    private static int nivelAcceso;
     private String tipoUsuario;
     private String contraseña;
     
     public void setNivelAcceso(int _nivelAcceso){
-        this.nivelAcceso = _nivelAcceso;
+        Usuario.nivelAcceso = _nivelAcceso;
     }
     
     public void setTipoUsuario(String _tipoUsuario){
@@ -19,7 +19,7 @@ public class Usuario {
     }
     
     public int getNivelAcceso (){
-        return this.nivelAcceso;
+        return Usuario.nivelAcceso;
     }
     
     public String getTipoUsuario(){

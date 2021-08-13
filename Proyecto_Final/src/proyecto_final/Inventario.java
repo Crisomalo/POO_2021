@@ -1,11 +1,35 @@
 
 package proyecto_final;
 
-public class Inventario extends javax.swing.JFrame {
+import helpers.Datos;
+import helpers.Usuario;
+import javax.swing.table.DefaultTableModel;
 
+public class Inventario extends javax.swing.JFrame {
+    
+    Usuario usuario = new Usuario();
+    
     public Inventario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        if (usuario.getNivelAcceso() == 1) {
+            txtUsuario.setText("Acceso total");
+        } else {
+            txtUsuario.setText("Acceso parcial");
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+        
+        model.addColumn("Nombre");
+        model.addColumn("Codigo");
+        model.addColumn("Cantidad");
+        model.addColumn("Ingreso");
+        model.addColumn("Retirado");
+        model.addColumn("Proveedor");
+        
+        initDatos();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -49,20 +73,18 @@ public class Inventario extends javax.swing.JFrame {
 
         tableInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tableInventario);
 
-        panelInventario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 167, 690, 240));
+        panelInventario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 690, 330));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelInventario.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
@@ -71,10 +93,10 @@ public class Inventario extends javax.swing.JFrame {
         panelInventario.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, -1, -1));
 
         iconBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-        panelInventario.add(iconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        panelInventario.add(iconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
 
         Buscar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        panelInventario.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 650, 30));
+        panelInventario.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 650, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,4 +167,22 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JLabel txtInventario;
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
+    public void initDatos() {
+        
+       Datos inventario = new Datos();
+        
+        int aux = 0;
+        
+        DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
+        
+        for(int i = 0; i < 50 && aux == 0; i++){
+                    if(Datos.data[i][0] != null){
+                        Object []  row = {Datos.data[i][0],inventario.data[i][1],inventario.data[i][2],inventario.data[i][3],inventario.data[i][4],inventario.data[i][5]};
+                        model.addRow(row);
+                    }
+                    if(Datos.data[i][0] == null){
+                            aux = 1;
+                        }
+            }
+    }
 }

@@ -1,10 +1,40 @@
 package proyecto_final;
 
-public class Ingreso extends javax.swing.JFrame {
+import helpers.Datos;
+import helpers.Usuario;
+import javax.swing.table.DefaultTableModel;
 
+public class Ingreso extends javax.swing.JFrame {
+    
+    Usuario usuario = new Usuario();
+    Datos ingreso = new Datos();
+    
     public Ingreso() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        if (usuario.getNivelAcceso() == 1) {
+            txtUsuario.setText("Acceso total");
+        } else {
+            txtUsuario.setText("Acceso parcial");
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
+        
+        model.addColumn("Nombre");
+        model.addColumn("Codigo");
+        model.addColumn("Proveedor");
+        model.addColumn("Cantidad");
+        model.addColumn("Ingresado");
+        initDatos();
+        
+        for(int i = 0; i < 50; i++){
+            if(Datos.data[i][0] != null){
+                boxItems.addItem(Datos.data[i][0]);
+            }
+        }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -15,20 +45,17 @@ public class Ingreso extends javax.swing.JFrame {
         imgUsuario = new javax.swing.JLabel();
         txtIngreso = new javax.swing.JLabel();
         iconIngreso = new javax.swing.JLabel();
-        buttonLimpiarCampos = new javax.swing.JButton();
         txtUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableIngreso = new javax.swing.JTable();
         buttonRegresar = new javax.swing.JButton();
-        txtCodigo = new javax.swing.JLabel();
         txtNombre = new javax.swing.JLabel();
         buttonIngresar = new javax.swing.JButton();
-        setCodigo = new javax.swing.JTextField();
-        setNombre = new javax.swing.JTextField();
         txtProveedor = new javax.swing.JLabel();
         setProveedor = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JLabel();
         setCantidad = new javax.swing.JTextField();
+        boxItems = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -48,30 +75,22 @@ public class Ingreso extends javax.swing.JFrame {
         iconIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_origin/ingreso.png"))); // NOI18N
         panelIngreso.add(iconIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        buttonLimpiarCampos.setBackground(new java.awt.Color(255, 255, 255));
-        buttonLimpiarCampos.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        buttonLimpiarCampos.setText("Limpiar campos");
-        buttonLimpiarCampos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelIngreso.add(buttonLimpiarCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
-
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelIngreso.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
         tableIngreso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tableIngreso);
 
-        panelIngreso.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 680, 90));
+        panelIngreso.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 680, 140));
 
         buttonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         buttonRegresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -84,13 +103,9 @@ public class Ingreso extends javax.swing.JFrame {
         });
         panelIngreso.add(buttonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
 
-        txtCodigo.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        txtCodigo.setText("Codigo:");
-        panelIngreso.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
-
         txtNombre.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        txtNombre.setText("Nombre: ");
-        panelIngreso.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+        txtNombre.setText("Item:");
+        panelIngreso.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         buttonIngresar.setBackground(new java.awt.Color(255, 255, 255));
         buttonIngresar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -101,37 +116,36 @@ public class Ingreso extends javax.swing.JFrame {
                 buttonIngresarActionPerformed(evt);
             }
         });
-        panelIngreso.add(buttonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
-        panelIngreso.add(setCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 250, 30));
-
-        setNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setNombreActionPerformed(evt);
-            }
-        });
-        panelIngreso.add(setNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 250, 30));
+        panelIngreso.add(buttonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 160, -1));
 
         txtProveedor.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtProveedor.setText("Proveedor:");
-        panelIngreso.add(txtProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+        panelIngreso.add(txtProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         setProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setProveedorActionPerformed(evt);
             }
         });
-        panelIngreso.add(setProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 250, 30));
+        panelIngreso.add(setProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 250, 30));
 
         txtCantidad.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtCantidad.setText("Cantidad:");
-        panelIngreso.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
+        panelIngreso.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         setCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setCantidadActionPerformed(evt);
             }
         });
-        panelIngreso.add(setCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 250, 30));
+        panelIngreso.add(setCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 250, 30));
+
+        boxItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxItemsActionPerformed(evt);
+            }
+        });
+        panelIngreso.add(boxItems, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 250, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,12 +166,44 @@ public class Ingreso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIngresarActionPerformed
-        // TODO add your handling code here:
+        
+        int aux = 0, temporal;
+        String _aux = "";
+        
+        if(!"".equals(setProveedor.getText()) && !"".equals(setCantidad.getText())){
+            for(int i = 0; i < 50; i++){
+                if(boxItems.getSelectedItem().equals(Datos.data[i][0])){
+                    if(Datos.data[i][2] == null){
+                        Datos.data[i][2] = "0";
+                    }
+                    temporal = (Integer.parseInt(Datos.data[i][2])) + (Integer.parseInt(setCantidad.getText()));
+                    _aux = Integer.toString(temporal);
+                    Datos.data[i][3] = setCantidad.getText();
+                    Datos.data[i][2] = _aux;
+                    Datos.data[i][5] = setProveedor.getText();
+                }
+            }
+        }
+        setProveedor.setText("");
+        setCantidad.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
+        
+        for(int i = 0; i < 50 && aux == 0; i++){
+            if(Datos.data[i][0] != null && Datos.data[i][2] != null){
+                Object []  row = {Datos.data[i][0],Datos.data[i][1],Datos.data[i][5],Datos.data[i][2],Datos.data[i][3]};
+                        model.addRow(row);
+            }
+            if(Datos.data[i][0] == null){
+                aux = 1;
+            }
+    }
+        for( int i = model.getRowCount()-1; i >= 0; i--){
+            model.removeRow(i);
+        }
+        
+        initDatos();
     }//GEN-LAST:event_buttonIngresarActionPerformed
-
-    private void setNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_setNombreActionPerformed
 
     private void setProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setProveedorActionPerformed
         // TODO add your handling code here:
@@ -172,6 +218,10 @@ public class Ingreso extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_buttonRegresarActionPerformed
+
+    private void boxItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxItemsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxItemsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,23 +259,41 @@ public class Ingreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxItems;
     private javax.swing.JButton buttonIngresar;
-    private javax.swing.JButton buttonLimpiarCampos;
     private javax.swing.JButton buttonRegresar;
     private javax.swing.JLabel iconIngreso;
     private javax.swing.JLabel imgUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelIngreso;
     private javax.swing.JTextField setCantidad;
-    private javax.swing.JTextField setCodigo;
-    private javax.swing.JTextField setNombre;
     private javax.swing.JTextField setProveedor;
     private javax.swing.JTable tableIngreso;
     private javax.swing.JLabel txtCantidad;
-    private javax.swing.JLabel txtCodigo;
     private javax.swing.JLabel txtIngreso;
     private javax.swing.JLabel txtNombre;
     private javax.swing.JLabel txtProveedor;
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
+public void initDatos() {
+        
+       Datos inventario = new Datos();
+        
+        int aux = 0;
+        
+        DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
+        
+        
+        for(int i = 0; i < 50 && aux == 0; i++){
+                    if(Datos.data[i][0] != null && Datos.data[i][2] != null){
+                        Object []  row = {Datos.data[i][0],Datos.data[i][1],Datos.data[i][5],Datos.data[i][2],Datos.data[i][3]};
+                        model.addRow(row);
+                    }
+                    if(Datos.data[i][0] == null){
+                            aux = 1;
+                        }
+            }
+    }
+    
+    
 }

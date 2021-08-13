@@ -1,25 +1,25 @@
-
 package proyecto_final;
 
 import helpers.Administrador;
 import helpers.Normal;
+import helpers.Usuario;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
     Administrador administrador = new Administrador();
     Normal normal = new Normal();
-    
-    public String tipoUsuario [] = {administrador.getTipoUsuario(),normal.getTipoUsuario()};
-    public String contraseña [] = {administrador.getContraseña(), normal.getContraseña()};
-    public int nivelAcceso [] = {administrador.getNivelAcceso(),normal.getNivelAcceso()};
-            
+    Usuario usuario = new Usuario();
+
+    public String tipoUsuario[] = {administrador.getTipoUsuario(), normal.getTipoUsuario()};
+    public String contraseña[] = {administrador.getContraseña(), normal.getContraseña()};
+    public int nivelAcceso[] = {administrador.getNivelAcceso(), normal.getNivelAcceso()};
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +31,7 @@ public class Login extends javax.swing.JFrame {
         LabelContraseña = new javax.swing.JLabel();
         Usuario = new javax.swing.JTextField();
         Contraseña = new javax.swing.JPasswordField();
-        txtUsuario = new javax.swing.JLabel();
+        txtUsuarioLogin = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JLabel();
         Ingresar = new javax.swing.JButton();
 
@@ -66,9 +66,9 @@ public class Login extends javax.swing.JFrame {
         panelLogin.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 114, 240, 31));
         panelLogin.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 192, 240, 30));
 
-        txtUsuario.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        txtUsuario.setText("Usuario");
-        panelLogin.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 85, -1, -1));
+        txtUsuarioLogin.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtUsuarioLogin.setText("Usuario");
+        panelLogin.add(txtUsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 85, -1, -1));
 
         txtContraseña.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtContraseña.setText("Contraseña");
@@ -104,22 +104,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
-        int count = 0, i,aux = 0;
-        
-        for(i = 0; i < tipoUsuario.length && aux != 1; i++){
-            if(Usuario.getText().equals(tipoUsuario[i])){
-                 count = i;
-                 aux = 1;
+        int count = 0, i, aux = 0;
+
+        for (i = 0; i < tipoUsuario.length && aux != 1; i++) {
+            if (Usuario.getText().equals(tipoUsuario[i])) {
+                count = i;
+                aux = 1;
             }
         }
+        if (Usuario.getText().equals(administrador.getTipoUsuario())) {
+            usuario.setNivelAcceso(1);
+        } else {
+            usuario.setNivelAcceso(2);
+        }
         System.out.println(tipoUsuario.length);
-        if(count < tipoUsuario.length ){
-            if(Contraseña.getText().equals(contraseña[count])){
+        if (count < tipoUsuario.length) {
+            if (Contraseña.getText().equals(contraseña[count])) {
                 this.setVisible(false);
                 Menu menu = new Menu();
                 menu.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.","Error",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -170,6 +175,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField Usuario;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JLabel txtContraseña;
-    private javax.swing.JLabel txtUsuario;
+    private javax.swing.JLabel txtUsuarioLogin;
     // End of variables declaration//GEN-END:variables
 }

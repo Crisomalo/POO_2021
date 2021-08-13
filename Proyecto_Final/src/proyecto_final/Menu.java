@@ -1,25 +1,27 @@
-
 package proyecto_final;
 
 import helpers.Datos;
 import helpers.Administrador;
+import helpers.Usuario;
 import javax.swing.table.DefaultTableModel;
 
-
 public class Menu extends javax.swing.JFrame {
-    
+
     Datos inventario = new Datos();
-    Administrador administrador = new Administrador();
-    
+    Usuario usuario = new Usuario();
+
     public Menu() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        this.txtUsuario.setText(administrador.getTipoUsuario());
-        
+        if (usuario.getNivelAcceso() == 1) {
+            txtUsuario.setText("Acceso total");
+        } else {
+            txtUsuario.setText("Acceso parcial");
+        }
+
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,6 +63,7 @@ public class Menu extends javax.swing.JFrame {
         panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelMenu.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
@@ -186,47 +189,46 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventarioActionPerformed
-        
-        
+
         Inventario inventario = new Inventario();
         inventario.setVisible(true);
-        
+
     }//GEN-LAST:event_InventarioActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        
+
         Modificar modificar = new Modificar();
         modificar.setVisible(true);
 
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
-        
+
         Historial historial = new Historial();
         historial.setVisible(true);
 
     }//GEN-LAST:event_HistorialActionPerformed
 
     private void IngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoActionPerformed
-        
+
         Ingreso ingreso = new Ingreso();
         ingreso.setVisible(true);
 
     }//GEN-LAST:event_IngresoActionPerformed
 
     private void SalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalidaActionPerformed
-       
+
         SalidaItem salida = new SalidaItem();
         salida.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_SalidaActionPerformed
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
 
         Login login = new Login();
         login.setVisible(true);
-        
+
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
     public static void main(String args[]) {
@@ -270,7 +272,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton Salida;
     private javax.swing.JLabel iconMenu;
     private javax.swing.JLabel imgUsuario;
-    private javax.swing.JPanel panelMenu;
+    public javax.swing.JPanel panelMenu;
     private javax.swing.JLabel txtCerrarSesion;
     private javax.swing.JLabel txtControlInventario;
     private javax.swing.JLabel txtHistorial;
