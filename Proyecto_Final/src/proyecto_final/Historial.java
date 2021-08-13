@@ -1,10 +1,14 @@
 package proyecto_final;
 
+import helpers.Datos;
+import helpers.Historico;
 import helpers.Usuario;
+import javax.swing.table.DefaultTableModel;
 
 public class Historial extends javax.swing.JFrame {
     
     Usuario usuario = new Usuario();
+    Historico historico = new Historico();
     
     public Historial() {
         
@@ -16,6 +20,18 @@ public class Historial extends javax.swing.JFrame {
         } else {
             txtUsuario.setText("Acceso parcial");
         }
+        
+        DefaultTableModel model = (DefaultTableModel) tableHistorial.getModel();
+
+        model.addColumn("Item");
+        model.addColumn("Codigo");
+        model.addColumn("Proveedor");
+        model.addColumn("Ingresado");
+        model.addColumn("Solicitante");
+        model.addColumn("Entregado");
+        initDatos();
+        
+        historico.imprimirMatrizHistorico();
     }
 
     @SuppressWarnings("unchecked")
@@ -30,8 +46,6 @@ public class Historial extends javax.swing.JFrame {
         buttonRegresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableHistorial = new javax.swing.JTable();
-        Buscar = new javax.swing.JTextField();
-        iconBuscar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -69,24 +83,15 @@ public class Historial extends javax.swing.JFrame {
 
         tableHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tableHistorial);
 
-        panelHistorial.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 690, 160));
-
-        Buscar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        panelHistorial.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 650, 30));
-
-        iconBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-        panelHistorial.add(iconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        panelHistorial.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 690, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,9 +149,7 @@ public class Historial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Buscar;
     private javax.swing.JButton buttonRegresar;
-    private javax.swing.JLabel iconBuscar;
     private javax.swing.JLabel iconHistorial;
     private javax.swing.JLabel imgUsuario;
     private javax.swing.JScrollPane jScrollPane1;
@@ -155,4 +158,21 @@ public class Historial extends javax.swing.JFrame {
     private javax.swing.JLabel txtInventario;
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public void initDatos() {
+
+        Datos inventario = new Datos();
+
+        int aux = 0;
+
+        DefaultTableModel model = (DefaultTableModel) tableHistorial.getModel();
+
+        for (int i = 0; i < 50 && aux == 0; i++) {
+            
+                Object[] row = {Historico.dataHistorico[i][0], Historico.dataHistorico[i][1], Historico.dataHistorico[i][2], Historico.dataHistorico[i][3], Historico.dataHistorico[i][4],Historico.dataHistorico[i][5]};
+                model.addRow(row);
+                
+        
+    }
+    }
 }

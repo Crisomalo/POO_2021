@@ -23,10 +23,9 @@ public class Modificar extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
         
-        model.addColumn("Nombre");
+        model.addColumn("Item");
         model.addColumn("Codigo");
         initDatos();
-        System.out.println(inventario.getSelectorFila());
         
         
     }
@@ -88,7 +87,7 @@ public class Modificar extends javax.swing.JFrame {
         panelModificar.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         txtNombre.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        txtNombre.setText("Nombre: ");
+        txtNombre.setText("Item:");
         panelModificar.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
 
         buttonAñadir.setBackground(new java.awt.Color(255, 255, 255));
@@ -167,7 +166,6 @@ public class Modificar extends javax.swing.JFrame {
             inventario.incrementarSelector();
             setNombre.setText("");
             setCodigo.setText("");
-            System.out.println(inventario.getSelectorFila());
         }
     }//GEN-LAST:event_buttonAñadirActionPerformed
 
@@ -178,8 +176,7 @@ public class Modificar extends javax.swing.JFrame {
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
         
         this.setVisible(false);
-        //Menu menu = new Menu();
-        //menu.setVisible(true);
+        
 
     }//GEN-LAST:event_buttonRegresarActionPerformed
 

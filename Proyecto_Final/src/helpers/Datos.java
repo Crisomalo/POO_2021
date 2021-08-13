@@ -3,7 +3,7 @@ package helpers;
 public class Datos {
     
     private static int selectorFila = 0;
-    public static String data[][] = new String [50][8];
+    public static String data[][] = new String [50][9];
     
     public void incrementarSelector(){
         Datos.selectorFila ++;
@@ -20,7 +20,7 @@ public class Datos {
     public void imprimirMatriz(){
         for(int i = 0; i < 50; i++){
             for(int j = 0; j <= 7; j++){
-                if(data[i][j] != null){
+                if(Datos.data[i][j] != null){
                 System.out.println(i + " " + j + " : " + data[i][j]);
                 }
             }

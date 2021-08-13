@@ -1,40 +1,41 @@
 package proyecto_final;
 
 import helpers.Datos;
+import helpers.Historico;
 import helpers.Usuario;
 import javax.swing.table.DefaultTableModel;
 
 public class Ingreso extends javax.swing.JFrame {
-    
+
     Usuario usuario = new Usuario();
-    Datos ingreso = new Datos();
-    
+    Historico historico = new Historico();
+
     public Ingreso() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         if (usuario.getNivelAcceso() == 1) {
             txtUsuario.setText("Acceso total");
         } else {
             txtUsuario.setText("Acceso parcial");
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
-        
-        model.addColumn("Nombre");
+
+        model.addColumn("Item");
         model.addColumn("Codigo");
         model.addColumn("Proveedor");
         model.addColumn("Cantidad");
-        model.addColumn("Ingresado");
+        model.addColumn("Ultimo ingreso");
         initDatos();
-        
-        for(int i = 0; i < 50; i++){
-            if(Datos.data[i][0] != null){
+
+        for (int i = 0; i < 50; i++) {
+            if (Datos.data[i][0] != null) {
                 boxItems.addItem(Datos.data[i][0]);
             }
         }
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -166,14 +167,14 @@ public class Ingreso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIngresarActionPerformed
-        
-        int aux = 0, temporal;
+
+        int aux = 0, temporal = 0;
         String _aux = "";
-        
-        if(!"".equals(setProveedor.getText()) && !"".equals(setCantidad.getText())){
-            for(int i = 0; i < 50; i++){
-                if(boxItems.getSelectedItem().equals(Datos.data[i][0])){
-                    if(Datos.data[i][2] == null){
+
+        if (!"".equals(setProveedor.getText()) && !"".equals(setCantidad.getText())) {
+            for (int i = 0; i < 50; i++) {
+                if (boxItems.getSelectedItem().equals(Datos.data[i][0])) {
+                    if (Datos.data[i][2] == null) {
                         Datos.data[i][2] = "0";
                     }
                     temporal = (Integer.parseInt(Datos.data[i][2])) + (Integer.parseInt(setCantidad.getText()));
@@ -183,26 +184,39 @@ public class Ingreso extends javax.swing.JFrame {
                     Datos.data[i][5] = setProveedor.getText();
                 }
             }
-        }
-        setProveedor.setText("");
-        setCantidad.setText("");
-        
-        DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
-        
-        for(int i = 0; i < 50 && aux == 0; i++){
-            if(Datos.data[i][0] != null && Datos.data[i][2] != null){
-                Object []  row = {Datos.data[i][0],Datos.data[i][1],Datos.data[i][5],Datos.data[i][2],Datos.data[i][3]};
-                        model.addRow(row);
+            setProveedor.setText("");
+            setCantidad.setText("");
+
+            DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
+
+            for (int i = 0; i < 50 && aux == 0; i++) {
+                if (Datos.data[i][0] != null && Datos.data[i][2] != null) {
+                    Object[] row = {Datos.data[i][0], Datos.data[i][1], Datos.data[i][5], Datos.data[i][2], Datos.data[i][3]};
+                    model.addRow(row);
+                }
+                if (Datos.data[i][0] == null) {
+                    aux = 1;
+                }
             }
-            if(Datos.data[i][0] == null){
-                aux = 1;
+            
+            for (int i = model.getRowCount() - 1; i >= 0; i--) {
+                model.removeRow(i);
             }
-    }
-        for( int i = model.getRowCount()-1; i >= 0; i--){
-            model.removeRow(i);
+
+            initDatos();
+            
+            int fila = historico.getSelectorFilaHistorico();
+            
+            Historico.dataHistorico[fila][0] = Datos.data[fila][0];//Item
+            Historico.dataHistorico[fila][1] = Datos.data[fila][1];//Codigo
+            Historico.dataHistorico[fila][2] = Datos.data[fila][5];//Proveedor
+            Historico.dataHistorico[fila][3] = Datos.data[fila][2];//Ingresado
+            Historico.dataHistorico[fila][4] = Datos.data[fila][6];//Solicitante
+            Historico.dataHistorico[fila][5] = Datos.data[fila][7];//Entregado 
+
+            historico.incrementarSelectorHistorico();
+            System.out.println(historico.getSelectorFilaHistorico());
         }
-        
-        initDatos();
     }//GEN-LAST:event_buttonIngresarActionPerformed
 
     private void setProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setProveedorActionPerformed
@@ -216,7 +230,7 @@ public class Ingreso extends javax.swing.JFrame {
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
 
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_buttonRegresarActionPerformed
 
     private void boxItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxItemsActionPerformed
@@ -276,24 +290,22 @@ public class Ingreso extends javax.swing.JFrame {
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 public void initDatos() {
-        
-       Datos inventario = new Datos();
-        
+
+        Datos inventario = new Datos();
+
         int aux = 0;
-        
+
         DefaultTableModel model = (DefaultTableModel) tableIngreso.getModel();
-        
-        
-        for(int i = 0; i < 50 && aux == 0; i++){
-                    if(Datos.data[i][0] != null && Datos.data[i][2] != null){
-                        Object []  row = {Datos.data[i][0],Datos.data[i][1],Datos.data[i][5],Datos.data[i][2],Datos.data[i][3]};
-                        model.addRow(row);
-                    }
-                    if(Datos.data[i][0] == null){
-                            aux = 1;
-                        }
+
+        for (int i = 0; i < 50 && aux == 0; i++) {
+            if (Datos.data[i][0] != null && Datos.data[i][2] != null) {
+                Object[] row = {Datos.data[i][0], Datos.data[i][1], Datos.data[i][5], Datos.data[i][2], Datos.data[i][3]};
+                model.addRow(row);
             }
+            if (Datos.data[i][0] == null) {
+                aux = 1;
+            }
+        }
     }
-    
-    
+
 }

@@ -21,10 +21,10 @@ public class Inventario extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
         
-        model.addColumn("Nombre");
+        model.addColumn("Item");
         model.addColumn("Codigo");
         model.addColumn("Cantidad");
-        model.addColumn("Ingreso");
+        model.addColumn("Ultimo ingreso");
         model.addColumn("Retirado");
         model.addColumn("Proveedor");
         
@@ -44,8 +44,6 @@ public class Inventario extends javax.swing.JFrame {
         tableInventario = new javax.swing.JTable();
         txtUsuario = new javax.swing.JLabel();
         imgUsuario = new javax.swing.JLabel();
-        iconBuscar = new javax.swing.JLabel();
-        Buscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -81,7 +79,7 @@ public class Inventario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableInventario);
 
-        panelInventario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 690, 330));
+        panelInventario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 690, 310));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -91,12 +89,6 @@ public class Inventario extends javax.swing.JFrame {
         imgUsuario.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
         panelInventario.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, -1, -1));
-
-        iconBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-        panelInventario.add(iconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, -1));
-
-        Buscar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        panelInventario.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 650, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,9 +148,7 @@ public class Inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Buscar;
     private javax.swing.JButton buttonRegresar;
-    private javax.swing.JLabel iconBuscar;
     private javax.swing.JLabel iconInventario;
     private javax.swing.JLabel imgUsuario;
     private javax.swing.JScrollPane jScrollPane1;
@@ -177,7 +167,7 @@ public class Inventario extends javax.swing.JFrame {
         
         for(int i = 0; i < 50 && aux == 0; i++){
                     if(Datos.data[i][0] != null){
-                        Object []  row = {Datos.data[i][0],inventario.data[i][1],inventario.data[i][2],inventario.data[i][3],inventario.data[i][4],inventario.data[i][5]};
+                        Object []  row = {Datos.data[i][0],inventario.data[i][1],inventario.data[i][2],inventario.data[i][3],inventario.data[i][7],inventario.data[i][5]};
                         model.addRow(row);
                     }
                     if(Datos.data[i][0] == null){
