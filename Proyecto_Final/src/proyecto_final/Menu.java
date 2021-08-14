@@ -3,6 +3,7 @@ package proyecto_final;
 import helpers.Datos;
 import helpers.Administrador;
 import helpers.Usuario;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Menu extends javax.swing.JFrame {
@@ -14,6 +15,7 @@ public class Menu extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
+        
         if (usuario.getNivelAcceso() == 1) {
             txtUsuario.setText("Acceso total");
         } else {
@@ -31,7 +33,7 @@ public class Menu extends javax.swing.JFrame {
         iconMenu = new javax.swing.JLabel();
         imgUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
-        txtInventario = new javax.swing.JLabel();
+        txtResumen = new javax.swing.JLabel();
         txtModificar = new javax.swing.JLabel();
         txtIngreso = new javax.swing.JLabel();
         txtSalida = new javax.swing.JLabel();
@@ -67,10 +69,10 @@ public class Menu extends javax.swing.JFrame {
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelMenu.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 11, 160, 30));
 
-        txtInventario.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        txtInventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtInventario.setText("Inventario");
-        panelMenu.add(txtInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 157, 70, -1));
+        txtResumen.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtResumen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtResumen.setText("Resumen");
+        panelMenu.add(txtResumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 157, 70, -1));
 
         txtModificar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         txtModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -197,15 +199,23 @@ public class Menu extends javax.swing.JFrame {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
 
-        Modificar modificar = new Modificar();
-        modificar.setVisible(true);
+        if (usuario.getNivelAcceso() == 1) {
+            Modificar modificar = new Modificar();
+            modificar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ingresar a esta opcion", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
 
-        Historial historial = new Historial();
-        historial.setVisible(true);
+        if (usuario.getNivelAcceso() == 1) {
+            Historial historial = new Historial();
+            historial.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ingresar a esta opcion", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_HistorialActionPerformed
 
@@ -225,7 +235,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_SalidaActionPerformed
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
-
+        
+        this.setVisible(false);
         Login login = new Login();
         login.setVisible(true);
 
@@ -277,8 +288,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel txtControlInventario;
     private javax.swing.JLabel txtHistorial;
     private javax.swing.JLabel txtIngreso;
-    private javax.swing.JLabel txtInventario;
     private javax.swing.JLabel txtModificar;
+    private javax.swing.JLabel txtResumen;
     private javax.swing.JLabel txtSalida;
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables

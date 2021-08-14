@@ -171,7 +171,7 @@ public class Ingreso extends javax.swing.JFrame {
         int aux = 0, temporal = 0;
         String _aux = "";
         int fila = historico.getSelectorFilaHistorico();
-        
+
         if (!"".equals(setProveedor.getText()) && !"".equals(setCantidad.getText())) {
             for (int i = 0; i < 50; i++) {
                 if (boxItems.getSelectedItem().equals(Datos.data[i][0])) {
@@ -183,11 +183,11 @@ public class Ingreso extends javax.swing.JFrame {
                     Datos.data[i][3] = setCantidad.getText();
                     Datos.data[i][2] = _aux;
                     Datos.data[i][5] = setProveedor.getText();
-                        Historico.dataHistorico[fila][0] = Datos.data[i][0];//Item
-                        Historico.dataHistorico[fila][1] = Datos.data[i][1];//Codigo
-                        Historico.dataHistorico[fila][2] = Datos.data[i][5];//Proveedor
-                        Historico.dataHistorico[fila][3] = Datos.data[i][2];//Ingresado
-                        historico.incrementarSelectorHistorico();
+                    Historico.dataHistorico[fila][0] = Datos.data[i][0];
+                    Historico.dataHistorico[fila][1] = Datos.data[i][1];
+                    Historico.dataHistorico[fila][2] = Datos.data[i][5];
+                    Historico.dataHistorico[fila][3] = Datos.data[i][2];
+                    historico.incrementarSelectorHistorico();
                 }
             }
             setProveedor.setText("");
@@ -204,7 +204,7 @@ public class Ingreso extends javax.swing.JFrame {
                     aux = 1;
                 }
             }
-            
+
             for (int i = model.getRowCount() - 1; i >= 0; i--) {
                 model.removeRow(i);
             }

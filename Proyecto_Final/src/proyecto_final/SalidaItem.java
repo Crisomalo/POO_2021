@@ -165,6 +165,7 @@ public class SalidaItem extends javax.swing.JFrame {
         int aux = 0, temporal = 0;
         String _aux = "";
         int dato_1 = 0, dato_2 = 0;
+        int fila = historico.getSelectorFilaHistorico();
 
         if (!"".equals(setEntregado.getText()) && !"".equals(setCantidad.getText()) && !"".equals(boxItems.getSelectedItem())) {
             for (int i = 0; i < 50; i++) {
@@ -174,6 +175,10 @@ public class SalidaItem extends javax.swing.JFrame {
                     }
                     Datos.data[i][7] = setCantidad.getText();
                     Datos.data[i][6] = setEntregado.getText();
+                        Historico.dataHistorico[fila][0] = Datos.data[i][0];
+                        Historico.dataHistorico[fila][1] = Datos.data[i][1];
+                        Historico.dataHistorico[fila][4] = Datos.data[i][6];
+                        Historico.dataHistorico[fila][5] = Datos.data[i][7];
                     dato_1 = Integer.parseInt(Datos.data[i][7]);
                     dato_2 = Integer.parseInt(Datos.data[i][2]);
                     if (dato_2 > dato_1) {
@@ -206,17 +211,6 @@ public class SalidaItem extends javax.swing.JFrame {
             }
 
             initDatos();
-            
-            int fila = historico.getSelectorFilaHistorico();
-            
-            Historico.dataHistorico[fila][0] = Datos.data[fila][0];//Item
-            Historico.dataHistorico[fila][1] = Datos.data[fila][1];//Codigo
-            Historico.dataHistorico[fila][2] = Datos.data[fila][5];//Proveedor
-            Historico.dataHistorico[fila][3] = Datos.data[fila][2];//Ingresado
-            Historico.dataHistorico[fila][4] = Datos.data[fila][6];//Solicitante
-            Historico.dataHistorico[fila][5] = Datos.data[fila][7];//Entregado 
-
-            historico.incrementarSelectorHistorico();
         }
             
 

@@ -6,21 +6,21 @@ import helpers.Usuario;
 import javax.swing.table.DefaultTableModel;
 
 public class Historial extends javax.swing.JFrame {
-    
+
     Usuario usuario = new Usuario();
     Historico historico = new Historico();
-    
+
     public Historial() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         if (usuario.getNivelAcceso() == 1) {
             txtUsuario.setText("Acceso total");
         } else {
             txtUsuario.setText("Acceso parcial");
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) tableHistorial.getModel();
 
         model.addColumn("Item");
@@ -30,7 +30,7 @@ public class Historial extends javax.swing.JFrame {
         model.addColumn("Solicitante");
         model.addColumn("Entregado");
         initDatos();
-        
+
         historico.imprimirMatrizHistorico();
     }
 
@@ -110,7 +110,7 @@ public class Historial extends javax.swing.JFrame {
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
 
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
@@ -168,11 +168,11 @@ public class Historial extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableHistorial.getModel();
 
         for (int i = 0; i < 50 && aux == 0; i++) {
-            if(Historico.dataHistorico[i][0] != null){
-                Object[] row = {Historico.dataHistorico[i][0], Historico.dataHistorico[i][1], Historico.dataHistorico[i][2], Historico.dataHistorico[i][3], Historico.dataHistorico[i][4],Historico.dataHistorico[i][5]};
+            if (Historico.dataHistorico[i][0] != null) {
+                Object[] row = {Historico.dataHistorico[i][0], Historico.dataHistorico[i][1], Historico.dataHistorico[i][2], Historico.dataHistorico[i][3], Historico.dataHistorico[i][4], Historico.dataHistorico[i][5]};
                 model.addRow(row);
-                
+
             }
-    }
+        }
     }
 }

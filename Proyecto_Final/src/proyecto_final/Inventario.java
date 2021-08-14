@@ -1,4 +1,3 @@
-
 package proyecto_final;
 
 import helpers.Datos;
@@ -6,30 +5,30 @@ import helpers.Usuario;
 import javax.swing.table.DefaultTableModel;
 
 public class Inventario extends javax.swing.JFrame {
-    
+
     Usuario usuario = new Usuario();
-    
+
     public Inventario() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         if (usuario.getNivelAcceso() == 1) {
             txtUsuario.setText("Acceso total");
         } else {
             txtUsuario.setText("Acceso parcial");
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
-        
+
         model.addColumn("Item");
         model.addColumn("Codigo");
-        model.addColumn("Cantidad");
+        model.addColumn("Stock");
         model.addColumn("Ultimo ingreso");
-        model.addColumn("Retirado");
+        model.addColumn("Ultima entrega");
         model.addColumn("Proveedor");
-        
+
         initDatos();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -107,9 +106,9 @@ public class Inventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
-        
+
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
@@ -158,21 +157,21 @@ public class Inventario extends javax.swing.JFrame {
     public javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
     public void initDatos() {
-        
-       Datos inventario = new Datos();
-        
+
+        Datos inventario = new Datos();
+
         int aux = 0;
-        
+
         DefaultTableModel model = (DefaultTableModel) tableInventario.getModel();
-        
-        for(int i = 0; i < 50 && aux == 0; i++){
-                    if(Datos.data[i][0] != null){
-                        Object []  row = {Datos.data[i][0],inventario.data[i][1],inventario.data[i][2],inventario.data[i][3],inventario.data[i][7],inventario.data[i][5]};
-                        model.addRow(row);
-                    }
-                    if(Datos.data[i][0] == null){
-                            aux = 1;
-                        }
+
+        for (int i = 0; i < 50 && aux == 0; i++) {
+            if (Datos.data[i][0] != null) {
+                Object[] row = {Datos.data[i][0], inventario.data[i][1], inventario.data[i][2], inventario.data[i][3], inventario.data[i][7], inventario.data[i][5]};
+                model.addRow(row);
             }
+            if (Datos.data[i][0] == null) {
+                aux = 1;
+            }
+        }
     }
 }
