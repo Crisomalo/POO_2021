@@ -170,7 +170,8 @@ public class Ingreso extends javax.swing.JFrame {
 
         int aux = 0, temporal = 0;
         String _aux = "";
-
+        int fila = historico.getSelectorFilaHistorico();
+        
         if (!"".equals(setProveedor.getText()) && !"".equals(setCantidad.getText())) {
             for (int i = 0; i < 50; i++) {
                 if (boxItems.getSelectedItem().equals(Datos.data[i][0])) {
@@ -182,6 +183,11 @@ public class Ingreso extends javax.swing.JFrame {
                     Datos.data[i][3] = setCantidad.getText();
                     Datos.data[i][2] = _aux;
                     Datos.data[i][5] = setProveedor.getText();
+                        Historico.dataHistorico[fila][0] = Datos.data[i][0];//Item
+                        Historico.dataHistorico[fila][1] = Datos.data[i][1];//Codigo
+                        Historico.dataHistorico[fila][2] = Datos.data[i][5];//Proveedor
+                        Historico.dataHistorico[fila][3] = Datos.data[i][2];//Ingresado
+                        historico.incrementarSelectorHistorico();
                 }
             }
             setProveedor.setText("");
@@ -204,18 +210,6 @@ public class Ingreso extends javax.swing.JFrame {
             }
 
             initDatos();
-            
-            int fila = historico.getSelectorFilaHistorico();
-            
-            Historico.dataHistorico[fila][0] = Datos.data[fila][0];//Item
-            Historico.dataHistorico[fila][1] = Datos.data[fila][1];//Codigo
-            Historico.dataHistorico[fila][2] = Datos.data[fila][5];//Proveedor
-            Historico.dataHistorico[fila][3] = Datos.data[fila][2];//Ingresado
-            Historico.dataHistorico[fila][4] = Datos.data[fila][6];//Solicitante
-            Historico.dataHistorico[fila][5] = Datos.data[fila][7];//Entregado 
-
-            historico.incrementarSelectorHistorico();
-            System.out.println(historico.getSelectorFilaHistorico());
         }
     }//GEN-LAST:event_buttonIngresarActionPerformed
 

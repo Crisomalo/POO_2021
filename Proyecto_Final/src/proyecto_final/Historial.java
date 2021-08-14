@@ -168,11 +168,11 @@ public class Historial extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tableHistorial.getModel();
 
         for (int i = 0; i < 50 && aux == 0; i++) {
-            
+            if(Historico.dataHistorico[i][0] != null){
                 Object[] row = {Historico.dataHistorico[i][0], Historico.dataHistorico[i][1], Historico.dataHistorico[i][2], Historico.dataHistorico[i][3], Historico.dataHistorico[i][4],Historico.dataHistorico[i][5]};
                 model.addRow(row);
                 
-        
+            }
     }
     }
 }
